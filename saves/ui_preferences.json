@@ -4,7 +4,9 @@
     "SHIPBUILDING": 61,
     "ENCHANTING": 33,
     "ALCHEMY": 57,
-    "COOKING": 75
+    "COOKING": 75,
+    "ARMORSMITH": 35,
+    "TAILORING": 75
   },
   "current_tool_type": "Advanced"
 }

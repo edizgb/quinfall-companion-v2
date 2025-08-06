@@ -31,7 +31,6 @@ def load_recipes():
     all_recipes = []
     
     recipe_files = {
-        'blacksmithing': 'data/recipes_blacksmithing.json',
         'cooking': 'data/recipes_cooking.json',
         'woodworking': 'data/recipes_woodworking.json',
         'tailoring': 'data/recipes_tailoring.json',
@@ -113,15 +112,16 @@ CRAFTING_RECIPES = load_recipes()
 class ImprovedCraftingTab(BaseTab):
     """Improved Crafting Tab with better UI/UX"""
     
-    def __init__(self):
+    def __init__(self, player=None):
         super().__init__("Crafting")
         self.current_tool_type = "Basic"
         self.current_page = 1
         self.recipes_per_page = 10  # Default
         self.selected_recipe = None
         self.recipe_buttons = []
-        self.player = Player()
-        self.player.load()
+        self.player = player if player else Player()
+        if not player:
+            self.player.load()
         self.recipe_loader = RecipeLoader()
         self.recipes = []
         

@@ -65,10 +65,7 @@ class CompanionApp(QMainWindow):
         self.main_layout.addWidget(self.api_status_widget)
         
         # Main tabs with player data
-        self.tabs = MainTabs()
-        # Pass player data to tabs that need it
-        if hasattr(self.tabs, 'set_player'):
-            self.tabs.set_player(self.player)
+        self.tabs = MainTabs(self.player)
         
         self.main_layout.addWidget(self.tabs)
         self.show()

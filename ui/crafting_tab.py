@@ -94,7 +94,7 @@ def load_recipes() -> List[Recipe]:
 CRAFTING_RECIPES = load_recipes()
 
 class CraftingTab(BaseTab):
-    def __init__(self):
+    def __init__(self, player=None):
         super().__init__("Crafting")
         self.notifier = RecipeUpdateNotifier(self)
         self.current_versions = {}  # Track recipe versions
@@ -103,8 +103,9 @@ class CraftingTab(BaseTab):
         self.recipes_per_page = 10
         self.selected_recipe = None  # Track currently selected recipe
         self.recipe_buttons = []  # Track recipe buttons for selection
-        self.player = Player()
-        self.player.load()
+        self.player = player if player else Player()
+        if not player:
+            self.player.load()
         self.load_preferences()
         self.setup_ui()
         
