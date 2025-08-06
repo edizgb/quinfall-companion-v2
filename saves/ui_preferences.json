@@ -3,10 +3,12 @@
   "profession_skills": {
     "SHIPBUILDING": 61,
     "ENCHANTING": 33,
-    "ALCHEMY": 57,
+    "ALCHEMY": 46,
     "COOKING": 75,
     "ARMORSMITH": 35,
-    "TAILORING": 75
+    "TAILORING": 75,
+    "WOODWORKING": 28,
+    "WEAPONSMITH": 42
   },
-  "current_tool_type": "Advanced"
+  "current_tool_type": "Improved"
 }
