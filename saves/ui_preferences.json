@@ -1,0 +1,8 @@
+{
+  "recipes_per_page": 10,
+  "profession_skills": {
+    "SHIPBUILDING": 61,
+    "ENCHANTING": 33
+  },
+  "current_tool_type": "Advanced"
+}

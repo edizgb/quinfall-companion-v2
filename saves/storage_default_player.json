@@ -1,0 +1,270 @@
+{
+  "player_id": "default_player",
+  "containers": {
+    "player_inventory": {
+      "storage_type": "inventory",
+      "capacity": 200,
+      "weight_limit": 5000.0,
+      "items": {
+        "Iron Ore": 100
+      },
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "meadow_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 50000.0,
+      "items": {
+        "Copper Ore": 50
+      },
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "meadow_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 40000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "kineallen_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 50000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "kineallen_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 40000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "mreafall_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 50000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "mreafall_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 40000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "reasya_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 45000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "reasya_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 35000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "horus_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 45000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "horus_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 35000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "calmnarock_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 40000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "calmnarock_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 30000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "larcbost_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 40000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "larcbost_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 30000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "nearon_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 35000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "nearon_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 25000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "pabas_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 35000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "pabas_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 25000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "rune_mound_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 30000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "rune_mound_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 20000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "shadow_atoll_bank": {
+      "storage_type": "bank",
+      "capacity": 200,
+      "weight_limit": 30000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "shadow_atoll_storage": {
+      "storage_type": "city_storage",
+      "capacity": 200,
+      "weight_limit": 20000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "starter_cottage_storage": {
+      "storage_type": "house_storage",
+      "capacity": 200,
+      "weight_limit": 15000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "medium_house_storage": {
+      "storage_type": "house_storage",
+      "capacity": 200,
+      "weight_limit": 25000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "large_manor_storage": {
+      "storage_type": "house_storage",
+      "capacity": 200,
+      "weight_limit": 35000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "estate_storage": {
+      "storage_type": "house_storage",
+      "capacity": 200,
+      "weight_limit": 45000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "guild_hall_storage": {
+      "storage_type": "guild_storage",
+      "capacity": 200,
+      "weight_limit": 60000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    },
+    "guild_warehouse": {
+      "storage_type": "guild_storage",
+      "capacity": 200,
+      "weight_limit": 75000.0,
+      "items": {},
+      "api_container_id": null,
+      "game_container_id": null,
+      "last_sync": null
+    }
+  }
+}

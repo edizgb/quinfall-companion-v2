@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-07-20",
+  "recipes": [
+    {
+      "recipe_name": "Iron Helm",
+      "profession": "Armorsmith",
+      "skill_level": 10,
+      "materials": {
+        "iron_ingot": 2,
+        "coal": 2
+      },
+      "base_price": 125,
+      "weight": 2.0,
+      "craft_time": 90,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    },
+    {
+      "recipe_name": "Steel Breastplate",
+      "profession": "Armorsmith",
+      "skill_level": 25,
+      "materials": {
+        "steel_ingot": 4,
+        "coal": 4
+      },
+      "base_price": 400,
+      "weight": 5.0,
+      "craft_time": 240,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    },
+    {
+      "recipe_name": "Iron Chestplate",
+      "profession": "Armorsmith",
+      "skill_level": 20,
+      "materials": {
+        "iron_ingot": 3,
+        "coal": 3
+      },
+      "base_price": 250,
+      "weight": 4.0,
+      "craft_time": 180,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    },
+    {
+      "recipe_name": "Steel Gauntlets",
+      "profession": "Armorsmith",
+      "skill_level": 30,
+      "materials": {
+        "steel_ingot": 2,
+        "coal": 2
+      },
+      "base_price": 200,
+      "weight": 1.5,
+      "craft_time": 120,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    },
+    {
+      "recipe_name": "Mithril Helmet",
+      "profession": "Armorsmith",
+      "skill_level": 45,
+      "materials": {
+        "mithril_ingot": 3,
+        "coal": 4
+      },
+      "base_price": 600,
+      "weight": 2.5,
+      "craft_time": 270,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    },
+    {
+      "recipe_name": "Steel Chestplate",
+      "profession": "Armorsmith",
+      "skill_level": 35,
+      "materials": {
+        "steel_ingot": 5,
+        "coal": 5
+      },
+      "base_price": 500,
+      "weight": 6.0,
+      "craft_time": 300,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    },
+    {
+      "recipe_name": "Iron Boots",
+      "profession": "Armorsmith",
+      "skill_level": 15,
+      "materials": {
+        "iron_ingot": 2,
+        "coal": 2
+      },
+      "base_price": 150,
+      "weight": 2.5,
+      "craft_time": 100,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    },
+    {
+      "recipe_name": "Bronze Shield",
+      "profession": "Armorsmith",
+      "skill_level": 18,
+      "materials": {
+        "bronze_ingot": 3,
+        "wood": 1,
+        "coal": 2
+      },
+      "base_price": 180,
+      "weight": 3.0,
+      "craft_time": 135,
+      "source": "Quinfall 2025 Update",
+      "version": 1
+    }
+  ]
+}

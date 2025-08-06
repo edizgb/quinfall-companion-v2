@@ -1,0 +1,332 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-07-19",
+  "recipes": [
+    {
+      "recipe_name": "Iron Dagger",
+      "profession": "Blacksmithing",
+      "skill_level": 5,
+      "materials": {
+        "iron_ingot": 1,
+        "coal": 1
+      },
+      "base_price": 75,
+      "weight": 1.2,
+      "craft_time": 60,
+      "source": "Sample Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version",
+      "material_prices": {
+        "iron_ingot": [12.5, 13.0, 13.2, 14.0, 14.5, 15.0, 15.2, 15.5, 16.0, 16.5, 17.0, 17.2, 17.5, 18.0, 18.5, 19.0, 19.2, 19.5, 20.0, 20.5, 21.0, 21.2, 21.5, 22.0, 22.5, 23.0, 23.2, 23.5, 24.0, 24.5, 25.0, 25.2, 25.5, 26.0, 26.5, 27.0, 27.2, 27.5, 28.0, 28.5, 29.0, 29.2, 29.5, 30.0, 30.5, 31.0, 31.2, 31.5, 32.0, 32.5],
+        "coal": [2.5, 2.7, 2.8, 3.0, 3.2, 3.5, 3.7, 3.8, 4.0, 4.2, 4.5, 4.7, 4.8, 5.0, 5.2, 5.5, 5.7, 5.8, 6.0, 6.2, 6.5, 6.7, 6.8, 7.0, 7.2, 7.5, 7.7, 7.8, 8.0, 8.2, 8.5, 8.7, 8.8, 9.0, 9.2, 9.5, 9.7, 9.8, 10.0, 10.2, 10.5, 10.7, 10.8, 11.0, 11.2, 11.5, 11.7, 11.8, 12.0, 12.2]
+      },
+      "output_prices": [70.0, 72.5, 75.0, 77.5, 80.0, 82.5, 85.0, 87.5, 90.0, 92.5, 95.0, 97.5, 100.0, 102.5, 105.0, 107.5, 110.0, 112.5, 115.0, 117.5, 120.0, 122.5, 125.0, 127.5, 130.0, 132.5, 135.0, 137.5, 140.0, 142.5, 145.0, 147.5, 150.0, 152.5, 155.0, 157.5, 160.0, 162.5, 165.0, 167.5, 170.0, 172.5, 175.0, 177.5, 180.0, 182.5, 185.0, 187.5, 190.0, 192.5]
+    },
+    {
+      "recipe_name": "Iron Sword",
+      "profession": "Blacksmithing",
+      "skill_level": 10,
+      "materials": {
+        "iron_ingot": 3,
+        "coal": 1
+      },
+      "base_price": 150,
+      "weight": 2.5,
+      "craft_time": 120,
+      "source": "Sample Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version",
+      "material_prices": {
+        "iron_ingot": [12.5, 13.0, 13.2, 14.0, 14.5, 15.0, 15.2, 15.5, 16.0, 16.5, 17.0, 17.2, 17.5, 18.0, 18.5, 19.0, 19.2, 19.5, 20.0, 20.5, 21.0, 21.2, 21.5, 22.0, 22.5, 23.0, 23.2, 23.5, 24.0, 24.5, 25.0, 25.2, 25.5, 26.0, 26.5, 27.0, 27.2, 27.5, 28.0, 28.5, 29.0, 29.2, 29.5, 30.0, 30.5, 31.0, 31.2, 31.5, 32.0, 32.5],
+        "coal": [2.5, 2.7, 2.8, 3.0, 3.2, 3.5, 3.7, 3.8, 4.0, 4.2, 4.5, 4.7, 4.8, 5.0, 5.2, 5.5, 5.7, 5.8, 6.0, 6.2, 6.5, 6.7, 6.8, 7.0, 7.2, 7.5, 7.7, 7.8, 8.0, 8.2, 8.5, 8.7, 8.8, 9.0, 9.2, 9.5, 9.7, 9.8, 10.0, 10.2, 10.5, 10.7, 10.8, 11.0, 11.2, 11.5, 11.7, 11.8, 12.0, 12.2]
+      },
+      "output_prices": [140.0, 145.0, 150.0, 155.0, 160.0, 165.0, 170.0, 175.0, 180.0, 185.0, 190.0, 195.0, 200.0, 205.0, 210.0, 215.0, 220.0, 225.0, 230.0, 235.0, 240.0, 245.0, 250.0, 255.0, 260.0, 265.0, 270.0, 275.0, 280.0, 285.0, 290.0, 295.0, 300.0, 305.0, 310.0, 315.0, 320.0, 325.0, 330.0, 335.0, 340.0, 345.0, 350.0, 355.0, 360.0, 365.0, 370.0, 375.0, 380.0, 385.0]
+    },
+    {
+      "recipe_name": "Bronze Dagger",
+      "profession": "Blacksmithing",
+      "skill_level": 15,
+      "materials": {
+        "bronze_ingot": 2,
+        "coal": 1
+      },
+      "base_price": 110,
+      "weight": 1.5,
+      "craft_time": 90,
+      "source": "Sample Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version",
+      "material_prices": {
+        "bronze_ingot": [18.0, 18.5, 19.0, 19.5, 20.0, 20.5, 21.0, 21.5, 22.0, 22.5, 23.0, 23.5, 24.0, 24.5, 25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0, 31.5, 32.0, 32.5, 33.0, 33.5, 34.0, 34.5, 35.0, 35.5, 36.0, 36.5, 37.0, 37.5, 38.0, 38.5, 39.0, 39.5, 40.0, 40.5, 41.0, 41.5, 42.0, 42.5],
+        "coal": [2.5, 2.7, 2.8, 3.0, 3.2, 3.5, 3.7, 3.8, 4.0, 4.2, 4.5, 4.7, 4.8, 5.0, 5.2, 5.5, 5.7, 5.8, 6.0, 6.2, 6.5, 6.7, 6.8, 7.0, 7.2, 7.5, 7.7, 7.8, 8.0, 8.2, 8.5, 8.7, 8.8, 9.0, 9.2, 9.5, 9.7, 9.8, 10.0, 10.2, 10.5, 10.7, 10.8, 11.0, 11.2, 11.5, 11.7, 11.8, 12.0, 12.2]
+      },
+      "output_prices": [105.0, 108.0, 110.0, 112.0, 115.0, 118.0, 120.0, 122.0, 125.0, 128.0, 130.0, 132.0, 135.0, 138.0, 140.0, 142.0, 145.0, 148.0, 150.0, 152.0, 155.0, 158.0, 160.0, 162.0, 165.0, 168.0, 170.0, 172.0, 175.0, 178.0, 180.0, 182.0, 185.0, 188.0, 190.0, 192.0, 195.0, 198.0, 200.0, 202.0, 205.0, 208.0, 210.0, 212.0, 215.0, 218.0, 220.0, 222.0, 225.0, 228.0]
+    },
+    {
+      "recipe_name": "Steel Longsword",
+      "profession": "Blacksmithing",
+      "skill_level": 25,
+      "materials": {
+        "steel_ingot": 4,
+        "leather_strips": 2,
+        "coal": 2
+      },
+      "base_price": 280,
+      "weight": 3.2,
+      "craft_time": 180,
+      "source": "TSV Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version",
+      "material_prices": {
+        "steel_ingot": [25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0, 35.0, 36.0, 37.0, 38.0, 39.0, 40.0, 41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 51.0, 52.0, 53.0, 54.0, 55.0, 56.0, 57.0, 58.0, 59.0, 60.0, 61.0, 62.0, 63.0, 64.0, 65.0, 66.0, 67.0, 68.0, 69.0, 70.0, 71.0, 72.0, 73.0, 74.0],
+        "leather_strips": [8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 20.5, 21.0, 21.5, 22.0, 22.5, 23.0, 23.5, 24.0, 24.5, 25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0, 31.5, 32.0, 32.5],
+        "coal": [2.5, 2.7, 2.8, 3.0, 3.2, 3.5, 3.7, 3.8, 4.0, 4.2, 4.5, 4.7, 4.8, 5.0, 5.2, 5.5, 5.7, 5.8, 6.0, 6.2, 6.5, 6.7, 6.8, 7.0, 7.2, 7.5, 7.7, 7.8, 8.0, 8.2, 8.5, 8.7, 8.8, 9.0, 9.2, 9.5, 9.7, 9.8, 10.0, 10.2, 10.5, 10.7, 10.8, 11.0, 11.2, 11.5, 11.7, 11.8, 12.0, 12.2]
+      },
+      "output_prices": [270.0, 275.0, 280.0, 285.0, 290.0, 295.0, 300.0, 305.0, 310.0, 315.0, 320.0, 325.0, 330.0, 335.0, 340.0, 345.0, 350.0, 355.0, 360.0, 365.0, 370.0, 375.0, 380.0, 385.0, 390.0, 395.0, 400.0, 405.0, 410.0, 415.0, 420.0, 425.0, 430.0, 435.0, 440.0, 445.0, 450.0, 455.0, 460.0, 465.0, 470.0, 475.0, 480.0, 485.0, 490.0, 495.0, 500.0, 505.0, 510.0, 515.0]
+    },
+    {
+      "recipe_name": "Mithril Helmet",
+      "profession": "Armorsmithing",
+      "skill_level": 45,
+      "materials": {
+        "mithril_ingot": 3,
+        "silk": 1,
+        "quality_creature_extract": 1
+      },
+      "base_price": 450,
+      "weight": 2.8,
+      "craft_time": 240,
+      "source": "TSV Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version",
+      "material_prices": {
+        "mithril_ingot": [45.0, 47.0, 49.0, 51.0, 53.0, 55.0, 57.0, 59.0, 61.0, 63.0, 65.0, 67.0, 69.0, 71.0, 73.0, 75.0, 77.0, 79.0, 81.0, 83.0, 85.0, 87.0, 89.0, 91.0, 93.0, 95.0, 97.0, 99.0, 101.0, 103.0, 105.0, 107.0, 109.0, 111.0, 113.0, 115.0, 117.0, 119.0, 121.0, 123.0, 125.0, 127.0, 129.0, 131.0, 133.0, 135.0, 137.0, 139.0, 141.0, 143.0],
+        "silk": [15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0, 35.0, 36.0, 37.0, 38.0, 39.0, 40.0, 41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 51.0, 52.0, 53.0, 54.0, 55.0, 56.0, 57.0, 58.0, 59.0, 60.0, 61.0, 62.0, 63.0, 64.0],
+        "quality_creature_extract": [35.0, 37.0, 39.0, 41.0, 43.0, 45.0, 47.0, 49.0, 51.0, 53.0, 55.0, 57.0, 59.0, 61.0, 63.0, 65.0, 67.0, 69.0, 71.0, 73.0, 75.0, 77.0, 79.0, 81.0, 83.0, 85.0, 87.0, 89.0, 91.0, 93.0, 95.0, 97.0, 99.0, 101.0, 103.0, 105.0, 107.0, 109.0, 111.0, 113.0, 115.0, 117.0, 119.0, 121.0, 123.0, 125.0, 127.0, 129.0, 131.0, 133.0]
+      },
+      "output_prices": [430.0, 440.0, 450.0, 460.0, 470.0, 480.0, 490.0, 500.0, 510.0, 520.0, 530.0, 540.0, 550.0, 560.0, 570.0, 580.0, 590.0, 600.0, 610.0, 620.0, 630.0, 640.0, 650.0, 660.0, 670.0, 680.0, 690.0, 700.0, 710.0, 720.0, 730.0, 740.0, 750.0, 760.0, 770.0, 780.0, 790.0, 800.0, 810.0, 820.0, 830.0, 840.0, 850.0, 860.0, 870.0, 880.0, 890.0, 900.0, 910.0, 920.0]
+    },
+    {
+      "recipe_name": "Iron Pickaxe",
+      "profession": "Blacksmithing",
+      "skill_level": 12,
+      "materials": {
+        "iron_ingot": 2,
+        "ebony_wood": 1,
+        "coal": 1
+      },
+      "base_price": 125,
+      "weight": 2.1,
+      "craft_time": 100,
+      "source": "Sample Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version",
+      "material_prices": {
+        "iron_ingot": [12.5, 13.0, 13.2, 14.0, 14.5, 15.0, 15.2, 15.5, 16.0, 16.5, 17.0, 17.2, 17.5, 18.0, 18.5, 19.0, 19.2, 19.5, 20.0, 20.5, 21.0, 21.2, 21.5, 22.0, 22.5, 23.0, 23.2, 23.5, 24.0, 24.5, 25.0, 25.2, 25.5, 26.0, 26.5, 27.0, 27.2, 27.5, 28.0, 28.5, 29.0, 29.2, 29.5, 30.0, 30.5, 31.0, 31.2, 31.5, 32.0, 32.5],
+        "ebony_wood": [22.0, 22.5, 23.0, 23.5, 24.0, 24.5, 25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0, 31.5, 32.0, 32.5, 33.0, 33.5, 34.0, 34.5, 35.0, 35.5, 36.0, 36.5, 37.0, 37.5, 38.0, 38.5, 39.0, 39.5, 40.0, 40.5, 41.0, 41.5, 42.0, 42.5, 43.0, 43.5, 44.0, 44.5, 45.0, 45.5, 46.0, 46.5],
+        "coal": [2.5, 2.7, 2.8, 3.0, 3.2, 3.5, 3.7, 3.8, 4.0, 4.2, 4.5, 4.7, 4.8, 5.0, 5.2, 5.5, 5.7, 5.8, 6.0, 6.2, 6.5, 6.7, 6.8, 7.0, 7.2, 7.5, 7.7, 7.8, 8.0, 8.2, 8.5, 8.7, 8.8, 9.0, 9.2, 9.5, 9.7, 9.8, 10.0, 10.2, 10.5, 10.7, 10.8, 11.0, 11.2, 11.5, 11.7, 11.8, 12.0, 12.2]
+      },
+      "output_prices": [120.0, 122.0, 125.0, 127.0, 130.0, 132.0, 135.0, 137.0, 140.0, 142.0, 145.0, 147.0, 150.0, 152.0, 155.0, 157.0, 160.0, 162.0, 165.0, 167.0, 170.0, 172.0, 175.0, 177.0, 180.0, 182.0, 185.0, 187.0, 190.0, 192.0, 195.0, 197.0, 200.0, 202.0, 205.0, 207.0, 210.0, 212.0, 215.0, 217.0, 220.0, 222.0, 225.0, 227.0, 230.0, 232.0, 235.0, 237.0, 240.0, 242.0]
+    },
+    {
+      "recipe_name": "Bronze Sword",
+      "profession": "Blacksmithing",
+      "skill_level": 20,
+      "materials": {
+        "bronze_ingot": 4,
+        "coal": 2
+      },
+      "base_price": 220,
+      "weight": 3.0,
+      "craft_time": 150,
+      "source": "Sample Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Iron Helm",
+      "profession": "Armorsmithing",
+      "skill_level": 10,
+      "materials": {
+        "iron_ingot": 3,
+        "leather": 2
+      },
+      "base_price": 180,
+      "weight": 2.8,
+      "craft_time": 150,
+      "source": "Sample Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Steel Breastplate",
+      "profession": "Armorsmithing",
+      "skill_level": 25,
+      "materials": {
+        "steel_ingot": 5,
+        "leather": 3
+      },
+      "base_price": 350,
+      "weight": 8.5,
+      "craft_time": 300,
+      "source": "Sample Data",
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Iron Longsword",
+      "profession": "Blacksmithing",
+      "skill_level": 15,
+      "materials": {"iron_ingot": 3, "coal": 1},
+      "weight": 3.5,
+      "base_price": 120,
+      "craft_time": 180,
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Steel Dagger",
+      "profession": "Blacksmithing",
+      "skill_level": 25,
+      "materials": {"steel_ingot": 2, "leather": 1},
+      "weight": 1.2,
+      "base_price": 85,
+      "craft_time": 120,
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Mithril Greatsword",
+      "profession": "Blacksmithing",
+      "skill_level": 40,
+      "materials": {"mithril_ingot": 8, "ebony_wood": 1},
+      "weight": 5.8,
+      "base_price": 350,
+      "craft_time": 300,
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Iron Chestplate",
+      "profession": "Armorsmithing",
+      "skill_level": 20,
+      "materials": {"iron_ingot": 6, "leather": 3},
+      "weight": 15.0,
+      "base_price": 200,
+      "craft_time": 240,
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Steel Gauntlets",
+      "profession": "Armorsmithing",
+      "skill_level": 30,
+      "materials": {"steel_ingot": 3, "leather": 2},
+      "weight": 4.5,
+      "base_price": 150,
+      "craft_time": 180,
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Mithril Helmet",
+      "profession": "Armorsmithing",
+      "skill_level": 45,
+      "materials": {"mithril_ingot": 5, "silk": 2},
+      "weight": 3.2,
+      "base_price": 280,
+      "craft_time": 210,
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Simple Axe",
+      "profession": "Blacksmithing",
+      "skill_level": 1,
+      "materials": {"creature_extract": 10, "poor_luck_essence": 3},
+      "output_stats": {"Durability": "Frigate", "Speed": "Battleship"},
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Solid Axe",
+      "profession": "Blacksmithing",
+      "skill_level": 2,
+      "materials": {"creature_extract": 20, "normal_luck_essence": 6},
+      "output_stats": {"Durability": "90k", "Speed": "125k"},
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Advanced Axe",
+      "profession": "Blacksmithing",
+      "skill_level": 3,
+      "materials": {"creature_extract": 15, "strong_luck_essence": 5, "quality_creature_extract": 2},
+      "output_stats": {"Speed": 13},
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Simple Pickaxe",
+      "profession": "Blacksmithing",
+      "skill_level": 1,
+      "materials": {"creature_extract": 10, "poor_luck_essence": 3},
+      "output_stats": {"Packages": 15, "Workbench": 2},
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Iron Chestplate",
+      "profession": "Armorsmithing",
+      "skill_level": 2,
+      "materials": {"iron": 500, "yucca": 50, "pine": 50, "coin": "750k"},
+      "output_stats": {"Pieces": 100},
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Steel Chestplate",
+      "profession": "Armorsmithing",
+      "skill_level": 3,
+      "materials": {"iron": 1000, "queen_palm": 50, "birch": 50, "coin": "1.2m"},
+      "output_stats": {"Pieces": 250},
+      "version": 1,
+      "material_mappings": {},
+      "changelog": "Initial version"
+    },
+    {
+      "recipe_name": "Steel Longsword",
+      "profession": "Blacksmithing",
+      "skill_level": 30,
+      "materials": {
+        "steel_ingot": 4,
+        "leather": 2
+      },
+      "base_price": 250,
+      "weight": 3.5,
+      "craft_time": 180,
+      "version": 1,
+      "source": "TSV import"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "latest_version": "1.0.0",
+  "entries": [
+    {
+      "version": "1.0.0",
+      "date": "2025-07-19",
+      "changes": [
+        "Initial version control system implementation",
+        "Added version tracking to all recipes"
+      ]
+    }
+  ]
+}

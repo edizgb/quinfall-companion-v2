@@ -1,0 +1,142 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-07-20",
+  "recipes": [
+    {
+      "recipe_name": "Small Fishing Boat",
+      "profession": "Shipbuilding",
+      "skill_level": 5,
+      "materials": {
+        "wood": 20,
+        "rope": 5,
+        "iron_nails": 10
+      },
+      "base_price": 500,
+      "weight": 100.0,
+      "craft_time": 1800,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "A small boat perfect for coastal fishing and short trips."
+    },
+    {
+      "recipe_name": "Merchant Vessel",
+      "profession": "Shipbuilding",
+      "skill_level": 15,
+      "materials": {
+        "wood": 50,
+        "rope": 15,
+        "iron_ingot": 8,
+        "canvas": 10
+      },
+      "base_price": 1500,
+      "weight": 300.0,
+      "craft_time": 3600,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "A sturdy merchant ship for trading between cities."
+    },
+    {
+      "recipe_name": "War Galley",
+      "profession": "Shipbuilding",
+      "skill_level": 25,
+      "materials": {
+        "wood": 80,
+        "rope": 25,
+        "steel_ingot": 15,
+        "canvas": 20,
+        "bronze_ingot": 5
+      },
+      "base_price": 3000,
+      "weight": 500.0,
+      "craft_time": 5400,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "A powerful warship equipped for naval combat."
+    },
+    {
+      "recipe_name": "Explorer's Ship",
+      "profession": "Shipbuilding",
+      "skill_level": 35,
+      "materials": {
+        "wood": 100,
+        "rope": 30,
+        "steel_ingot": 20,
+        "canvas": 25,
+        "mithril_ingot": 3
+      },
+      "base_price": 5000,
+      "weight": 600.0,
+      "craft_time": 7200,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "A large ship designed for long ocean voyages and exploration."
+    },
+    {
+      "recipe_name": "Royal Flagship",
+      "profession": "Shipbuilding",
+      "skill_level": 50,
+      "materials": {
+        "wood": 150,
+        "rope": 40,
+        "mithril_ingot": 10,
+        "canvas": 35,
+        "gold_ingot": 5,
+        "enchanted_wood": 10
+      },
+      "base_price": 10000,
+      "weight": 800.0,
+      "craft_time": 10800,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "The ultimate ship - a magnificent royal flagship with magical enhancements."
+    },
+    {
+      "recipe_name": "Repair Kit",
+      "profession": "Shipbuilding",
+      "skill_level": 8,
+      "materials": {
+        "wood": 5,
+        "rope": 2,
+        "iron_nails": 5
+      },
+      "base_price": 50,
+      "weight": 5.0,
+      "craft_time": 300,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "Essential repair materials for maintaining ships at sea."
+    },
+    {
+      "recipe_name": "Cargo Hold Upgrade",
+      "profession": "Shipbuilding",
+      "skill_level": 20,
+      "materials": {
+        "wood": 30,
+        "rope": 8,
+        "iron_ingot": 5
+      },
+      "base_price": 800,
+      "weight": 50.0,
+      "craft_time": 2400,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "Upgrade to increase ship cargo capacity for trading."
+    },
+    {
+      "recipe_name": "Ship Cannon",
+      "profession": "Shipbuilding",
+      "skill_level": 30,
+      "materials": {
+        "bronze_ingot": 10,
+        "steel_ingot": 5,
+        "wood": 8
+      },
+      "base_price": 1200,
+      "weight": 80.0,
+      "craft_time": 3000,
+      "source": "Quinfall 2025 Shipbuilding",
+      "version": 1,
+      "description": "Heavy cannon for naval warfare and ship defense."
+    }
+  ]
+}
