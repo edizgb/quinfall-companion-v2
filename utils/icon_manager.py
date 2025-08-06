@@ -11,6 +11,9 @@ from urllib.parse import urlparse
 from dataclasses import dataclass
 import time
 from bs4 import BeautifulSoup
+import logging
+
+logger = logging.getLogger(__name__)
 
 @dataclass
 class QuinfallIcon:
@@ -75,7 +78,7 @@ class QuinfallIconManager:
                     for name, icon_data in data.items():
                         self.icons[name] = QuinfallIcon(**icon_data)
             except Exception as e:
-                print(f"Warning: Could not load icon metadata: {e}")
+                logger.warning(f"Could not load icon metadata: {e}")
     
     def save_metadata(self):
         """Save icon metadata to cache"""
@@ -94,7 +97,7 @@ class QuinfallIconManager:
             with open(self.metadata_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
         except Exception as e:
-            print(f"Warning: Could not save icon metadata: {e}")
+            logger.warning(f"Could not save icon metadata: {e}")
     
     def get_icon_path(self, material_name: str) -> Optional[str]:
         """Get local path for material icon, download if needed"""
@@ -130,7 +133,7 @@ class QuinfallIconManager:
             
             # Download if not exists
             if not local_path.exists():
-                print(f"Downloading icon: {name} from {url}")
+                logger.info(f"Downloading icon: {name} from {url}")
                 response = requests.get(url, timeout=10)
                 response.raise_for_status()
                 
@@ -151,7 +154,7 @@ class QuinfallIconManager:
             return str(local_path)
             
         except Exception as e:
-            print(f"Warning: Could not download icon {name}: {e}")
+            logger.warning(f"Could not download icon {name}: {e}")
             return None
     
     def get_material_icon_html(self, material_name: str, size: int = 24) -> str:
@@ -225,12 +228,12 @@ class QuinfallIconManager:
                         # Clean up the URL to get the full resolution version
                         clean_url = self._clean_wiki_url(src)
                         found_icons[material_key] = clean_url
-                        print(f"Found icon: {alt} -> {clean_url}")
+                        logger.debug(f"Found icon: {alt} -> {clean_url}")
             
             return found_icons
             
         except Exception as e:
-            print(f"Error scraping wiki icons from {wiki_url}: {e}")
+            logger.error(f"Error scraping wiki icons from {wiki_url}: {e}")
             return {}
     
     def _clean_wiki_url(self, url: str) -> str:
@@ -267,11 +270,11 @@ class QuinfallIconManager:
             'https://the-unofficial-quinfall.fandom.com/wiki/Hunting'
         ]
         
-        print("🔍 Auto-discovering icons from Quinfall Wiki...")
+        logger.info("🔍 Auto-discovering icons from Quinfall Wiki...")
         new_icons = {}
         
         for page_url in wiki_pages:
-            print(f"Scraping: {page_url}")
+            logger.info(f"Scraping: {page_url}")
             page_icons = self.scrape_wiki_icons(page_url)
             new_icons.update(page_icons)
             time.sleep(1)  # Be respectful to the server
@@ -279,9 +282,9 @@ class QuinfallIconManager:
         # Update known icons with new discoveries
         self.known_icons.update(new_icons)
         
-        print(f"✅ Discovered {len(new_icons)} new icons!")
+        logger.info(f"✅ Discovered {len(new_icons)} new icons!")
         for name, url in new_icons.items():
-            print(f"  • {name}: {url}")
+            logger.info(f"  • {name}: {url}")
         
         return new_icons
     
@@ -296,7 +299,7 @@ class QuinfallIconManager:
                         os.remove(icon.local_path)
                     del self.icons[name]
                 except Exception as e:
-                    print(f"Warning: Could not remove old icon {name}: {e}")
+                    logger.warning(f"Could not remove old icon {name}: {e}")
         
         self.save_metadata()
 

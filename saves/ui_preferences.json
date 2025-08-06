@@ -2,7 +2,9 @@
   "recipes_per_page": 10,
   "profession_skills": {
     "SHIPBUILDING": 61,
-    "ENCHANTING": 33
+    "ENCHANTING": 33,
+    "ALCHEMY": 57,
+    "COOKING": 75
   },
   "current_tool_type": "Advanced"
 }

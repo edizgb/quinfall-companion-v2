@@ -4,6 +4,9 @@ TSV recipe validation utilities
 import csv
 import json
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
 
 def load_tsv_materials(tsv_path):
     """Load material names from TSV file"""
@@ -73,13 +76,13 @@ def main():
     
     report = validate_recipes(args.recipes, args.tsv, args.material_ref)
     
-    print(f"Validation complete. {report['valid']}/{report['total']} recipes valid")
+    logger.info(f"Validation complete. {report['valid']}/{report['total']} recipes valid")
     if report['issues']:
-        print("\nIssues found:")
+        logger.warning("\nIssues found:")
         for issue in report['issues']:
-            print(f"\nRecipe: {issue['recipe']}")
+            logger.info(f"\nRecipe: {issue['recipe']}")
             for detail in issue['issues']:
-                print(f"- {detail}")
+                logger.info(f"- {detail}")
 
 if __name__ == "__main__":
     main()

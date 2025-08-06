@@ -636,7 +636,7 @@ class QuinfallStorageSystem:
                     continue
                     
         except Exception as e:
-            print(f"Error loading storage data: {e}")
+            logger.error(f"Error loading storage data: {e}")
     
     def sync_with_api(self, api_client=None):
         """

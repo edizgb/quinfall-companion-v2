@@ -3,15 +3,16 @@ from PySide6.QtWidgets import QVBoxLayout, QLabel, QComboBox, QSlider, QHBoxLayo
 from PySide6.QtCore import Qt
 from data.enums import Profession, Recipe, ToolType, ProfessionTier, ProfessionCategory
 from data.player import Player
+import logging
+
+logger = logging.getLogger(__name__)
 
 CRAFTING_PROFESSIONS = [
-    Profession.BLACKSMITHING,
-    Profession.ARMORSMITHING,
-    Profession.WEAPONSMITHING,
+    Profession.ARMORSMITH,
+    Profession.WEAPONSMITH,
     Profession.ALCHEMY,
     Profession.COOKING,
     Profession.ENCHANTING,
-    Profession.ENGINEERING,
     Profession.JEWELCRAFTING,
     Profession.TAILORING
 ]
@@ -40,20 +41,20 @@ class Recipe:
         self.source = str(source)
 
 CRAFTING_RECIPES = [
-    # Blacksmithing
-    Recipe("Iron Dagger", Profession.BLACKSMITHING, ProfessionTier.APPRENTICE,
+    # Weaponsmithing
+    Recipe("Iron Dagger", Profession.WEAPONSMITH, ProfessionTier.APPRENTICE,
           {"Iron Ingot": 1}, ToolType.FORGE, 1, 1).set_metadata("A simple dagger.", "Melee", 10, 0.5, "Vendor"),
-    Recipe("Steel Sword", Profession.BLACKSMITHING, ProfessionTier.JOURNEYMAN,
+    Recipe("Steel Sword", Profession.WEAPONSMITH, ProfessionTier.JOURNEYMAN,
           {"Steel Ingot": 3}, ToolType.FORGE, 3, 10).set_metadata("A sturdy sword.", "Melee", 50, 1.2, "Vendor"),
-    Recipe("Iron Sword", Profession.BLACKSMITHING, ProfessionTier.APPRENTICE,
+    Recipe("Iron Sword", Profession.WEAPONSMITH, ProfessionTier.APPRENTICE,
           {"Iron Ingot": 2, "Coal": 1}, ToolType.FORGE, 1, 1).set_metadata("A basic sword.", "Melee", 5, 0.8, "Vendor"),
           
     # Armorsmithing  
-    Recipe("Iron Chestplate", Profession.ARMORSMITHING, ProfessionTier.APPRENTICE,
+    Recipe("Iron Chestplate", Profession.ARMORSMITH, ProfessionTier.APPRENTICE,
           {"Iron Ingot": 5}, ToolType.FORGE, 2, 5).set_metadata("Basic chest armor.", "Armor", 20, 2.5, "Vendor"),
-    Recipe("Steel Helm", Profession.ARMORSMITHING, ProfessionTier.JOURNEYMAN,
+    Recipe("Steel Helm", Profession.ARMORSMITH, ProfessionTier.JOURNEYMAN,
           {"Steel Ingot": 2}, ToolType.FORGE, 3, 12).set_metadata("A sturdy helm.", "Armor", 30, 1.0, "Vendor"),
-    Recipe("Steel Armor", Profession.ARMORSMITHING, ProfessionTier.JOURNEYMAN,
+    Recipe("Steel Armor", Profession.ARMORSMITH, ProfessionTier.JOURNEYMAN,
           {"Steel Ingot": 5, "Leather": 3}, ToolType.FORGE, 3, 10).set_metadata("A set of steel armor.", "Armor", 60, 4.0, "Vendor"),
           
     # Alchemy
@@ -140,11 +141,11 @@ class CraftingTab(BaseTab):
                 raise ValueError(f"Cannot craft - missing requirements: {', '.join(missing)}")
             
             # Crafting logic here
-            print(f"Crafted: {recipe.name}")
+            logger.info(f"Crafted: {recipe.name}")
             self.player.save()
             
         except Exception as e:
-            print(f"Error: {str(e)}")
+            logger.error(f"Error: {str(e)}")
             return False
         return True
 

@@ -5,6 +5,10 @@ Loads recipes from JSON files and provides filtering functionality
 
 import json
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
+
 from typing import List, Dict, Any
 from data.enums import Profession, ToolType, ProfessionTier, Recipe
 
@@ -27,7 +31,7 @@ class RecipeLoader:
             Profession.WOODWORKING: "recipes_woodworking.json",
             Profession.SHIPBUILDING: "recipes_shipbuilding.json",
             # Legacy files that need proper mapping
-            "BLACKSMITHING": "recipes_blacksmithing.json",
+            "WEAPONSMITH": "recipes_blacksmithing.json",
             "TAILORING": "recipes_tailoring.json"
         }
         
@@ -40,8 +44,8 @@ class RecipeLoader:
                         recipes = self._parse_recipes(data, profession_key)
                         
                         # Handle legacy profession mapping
-                        if profession_key == "BLACKSMITHING":
-                            # Split blacksmithing recipes between weaponsmith and armorsmith
+                        if profession_key == "WEAPONSMITH":
+                            # Split weaponsmith recipes between weaponsmith and armorsmith
                             weapon_recipes = []
                             armor_recipes = []
                             for recipe in recipes:
@@ -77,7 +81,7 @@ class RecipeLoader:
                             self.recipes_cache[profession_key] = recipes
                             
                 except Exception as e:
-                    print(f"Error loading {filename}: {e}")
+                    logger.error(f"Error loading {filename}: {e}")
     
     def _parse_recipes(self, data: Dict[str, Any], profession_key) -> List[Recipe]:
         """Parse recipe data from JSON"""
@@ -97,7 +101,7 @@ class RecipeLoader:
                 
                 # Map profession
                 if isinstance(profession_key, str):
-                    if profession_key == "BLACKSMITHING":
+                    if profession_key == "WEAPONSMITH":
                         profession = Profession.WEAPONSMITH  # Default, will be split later
                     elif profession_key == "TAILORING":
                         profession = Profession.TAILORING
@@ -148,7 +152,7 @@ class RecipeLoader:
                 recipes.append(recipe)
                 
             except Exception as e:
-                print(f"Error parsing recipe {recipe_data}: {e}")
+                logger.error(f"Error parsing recipe {recipe_data}: {e}")
                 continue
         
         return recipes

@@ -13,13 +13,13 @@ class TestCraftingErrors(unittest.TestCase):
         self.crafting_tab.player = self.player
         
     def test_skill_level_error(self):
-        recipe = Recipe("Test Item", Profession.BLACKSMITHING, 
+        recipe = Recipe("Test Item", Profession.WEAPONSMITH, 
                        ProfessionTier.MASTER, {}, ToolType.FORGE, 1)
         result = self.crafting_tab.craft_item(recipe)
         self.assertFalse(result)
         
     def test_tool_level_error(self):
-        recipe = Recipe("Test Item", Profession.BLACKSMITHING,
+        recipe = Recipe("Test Item", Profession.WEAPONSMITH,
                        ProfessionTier.APPRENTICE, {}, ToolType.FORGE, 5)
         result = self.crafting_tab.craft_item(recipe)
         self.assertFalse(result)

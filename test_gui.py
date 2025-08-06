@@ -61,9 +61,9 @@ def test_player_system():
         
         # Test skill modification
         from data.enums import Profession
-        original_blacksmithing = player.skills.get(Profession.BLACKSMITHING, 1)
-        player.skills[Profession.BLACKSMITHING] = 50
-        logger.info(f"✅ Blacksmithing skill changed from {original_blacksmithing} to 50")
+        original_weaponsmithing = player.skills.get(Profession.WEAPONSMITH, 1)
+        player.skills[Profession.WEAPONSMITH] = 50
+        logger.info(f"✅ Weaponsmithing skill changed from {original_weaponsmithing} to 50")
         
         # Test save/load
         player.save()
@@ -72,9 +72,9 @@ def test_player_system():
         # Create new player instance and load
         player2 = Player()
         player2.load()
-        loaded_blacksmithing = player2.skills.get(Profession.BLACKSMITHING, 1)
+        loaded_weaponsmithing = player2.skills.get(Profession.WEAPONSMITH, 1)
         
-        if loaded_blacksmithing == 50:
+        if loaded_weaponsmithing == 50:
             logger.info("✅ Player data persistence verified")
             return True
         else:

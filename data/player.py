@@ -3,6 +3,9 @@ from data.storage_system import QuinfallStorageSystem, StorageLocation
 from data.quinfall_materials import QUINFALL_MATERIALS, get_all_material_names
 import json
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Player:
     def __init__(self):
@@ -135,7 +138,7 @@ class Player:
                     # Split old BLACKSMITHING into WEAPONSMITH and ARMORSMITH
                     migrated_skills["WEAPONSMITH"] = lvl
                     migrated_skills["ARMORSMITH"] = lvl
-                    print(f"Debug: Migrated BLACKSMITHING level {lvl} to both WEAPONSMITH and ARMORSMITH")
+                    logger.info(f"Migrated BLACKSMITHING level {lvl} to both WEAPONSMITH and ARMORSMITH")
                 else:
                     migrated_skills[p] = lvl
             
@@ -145,7 +148,7 @@ class Player:
                 try:
                     self.skills[Profession[p]] = lvl
                 except KeyError:
-                    print(f"Warning: Unknown profession '{p}' in save data, skipping")
+                    logger.warning(f"Unknown profession '{p}' in save data, skipping")
             
             # Ensure all current professions have a skill level
             for prof in Profession:
@@ -164,7 +167,7 @@ class Player:
                 try:
                     self.tools[ToolType[t]] = lvl
                 except KeyError:
-                    print(f"Warning: Unknown tool type '{t}' in save data, skipping")
+                    logger.warning(f"Unknown tool type '{t}' in save data, skipping")
             
             # Ensure all current tools have a level
             for tool in ToolType:
@@ -186,7 +189,7 @@ class Player:
                     try:
                         self.tool_types[Profession[p]] = tool_type
                     except KeyError:
-                        print(f"Warning: Unknown profession '{p}' in tool_types, skipping")
+                        logger.warning(f"Unknown profession '{p}' in tool_types, skipping")
             else:
                 self.tool_types = {prof: "Basic" for prof in Profession}
             
@@ -210,7 +213,7 @@ class Player:
                     try:
                         self.profession_tool_levels[Profession[p]] = lvl
                     except KeyError:
-                        print(f"Warning: Unknown profession '{p}' in profession_tool_levels, skipping")
+                        logger.warning(f"Unknown profession '{p}' in profession_tool_levels, skipping")
             else:
                 self.profession_tool_levels = {prof: 1 for prof in Profession}
             

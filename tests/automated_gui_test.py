@@ -7,10 +7,13 @@ Tests all functionality including state persistence, recipe loading, and craftin
 import sys
 import time
 import json
+import logging
 from pathlib import Path
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtTest import QTest
+
+logger = logging.getLogger(__name__)
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -37,7 +40,7 @@ class AutomatedGUITest:
         }
         self.test_results.append(result)
         status = "✅ PASS" if success else "❌ FAIL"
-        print(f"[CYCLE {self.current_cycle}] {status}: {test_name} - {details}")
+        logger.info(f"[CYCLE {self.current_cycle}] {status}: {test_name} - {details}")
         
     def setup_app(self):
         """Setup the application"""
@@ -73,7 +76,7 @@ class AutomatedGUITest:
                 prof = recipe.profession.name if hasattr(recipe.profession, 'name') else str(recipe.profession)
                 professions[prof] = professions.get(prof, 0) + 1
             
-            expected_profs = ['BLACKSMITHING', 'COOKING', 'WOODWORKING', 'TAILORING', 'ALCHEMY']
+            expected_profs = ['WEAPONSMITH', 'COOKING', 'WOODWORKING', 'TAILORING', 'ALCHEMY']
             found_profs = list(professions.keys())
             
             success = len(set(expected_profs) & set(found_profs)) >= 4
@@ -259,7 +262,7 @@ class AutomatedGUITest:
     
     def run_cycle_1(self):
         """CYCLE 1: Basic Functionality Test"""
-        print("\n🚀 STARTING CYCLE 1: Basic Functionality Test")
+        logger.info("\n🚀 STARTING CYCLE 1: Basic Functionality Test")
         self.current_cycle = 1
         
         if not self.setup_app():
@@ -275,7 +278,7 @@ class AutomatedGUITest:
     
     def run_cycle_2(self):
         """CYCLE 2: State Persistence Test"""
-        print("\n🔄 STARTING CYCLE 2: State Persistence Test")
+        logger.info("\n🔄 STARTING CYCLE 2: State Persistence Test")
         self.current_cycle = 2
         
         success = True
@@ -286,7 +289,7 @@ class AutomatedGUITest:
     
     def run_cycle_3(self):
         """CYCLE 3: Advanced Logic Test"""
-        print("\n⚙️ STARTING CYCLE 3: Advanced Logic Test")
+        logger.info("\n⚙️ STARTING CYCLE 3: Advanced Logic Test")
         self.current_cycle = 3
         
         success = True
@@ -297,37 +300,37 @@ class AutomatedGUITest:
     
     def generate_report(self):
         """Generate final test report"""
-        print("\n" + "="*60)
-        print("📊 FINAL TEST REPORT")
-        print("="*60)
+        logger.info("\n" + "="*60)
+        logger.info("📊 FINAL TEST REPORT")
+        logger.info("="*60)
         
         total_tests = len(self.test_results)
         passed_tests = sum(1 for r in self.test_results if r['success'])
         failed_tests = total_tests - passed_tests
         
-        print(f"Total Tests: {total_tests}")
-        print(f"✅ Passed: {passed_tests}")
-        print(f"❌ Failed: {failed_tests}")
-        print(f"Success Rate: {(passed_tests/total_tests)*100:.1f}%")
+        logger.info(f"Total Tests: {total_tests}")
+        logger.info(f"✅ Passed: {passed_tests}")
+        logger.info(f"❌ Failed: {failed_tests}")
+        logger.info(f"Success Rate: {(passed_tests/total_tests)*100:.1f}%")
         
-        print("\nDetailed Results:")
+        logger.info("\nDetailed Results:")
         for result in self.test_results:
             status = "✅" if result['success'] else "❌"
-            print(f"  {status} [C{result['cycle']}] {result['test']}: {result['details']}")
+            logger.info(f"  {status} [C{result['cycle']}] {result['test']}: {result['details']}")
         
         # Save report to file
         report_file = Path(__file__).parent / "test_report.json"
         with open(report_file, 'w') as f:
             json.dump(self.test_results, f, indent=2)
         
-        print(f"\n📁 Report saved to: {report_file}")
+        logger.info(f"\n📁 Report saved to: {report_file}")
         
         return passed_tests == total_tests
     
     def run_all_tests(self):
         """Run all 3 cycles of testing"""
-        print("🎯 STARTING AUTOMATED 3-CYCLE GUI/UX TEST")
-        print("=" * 50)
+        logger.info("🎯 STARTING AUTOMATED 3-CYCLE GUI/UX TEST")
+        logger.info("=" * 50)
         
         try:
             cycle1_success = self.run_cycle_1()
@@ -337,20 +340,20 @@ class AutomatedGUITest:
             all_success = self.generate_report()
             
             if all_success:
-                print("\n🎉 ALL TESTS PASSED! Quinfall Companion App is ready!")
-                print("✅ Crafting logic is working correctly")
-                print("✅ State persistence is working")
-                print("✅ All UI components are functional")
-                print("\n🚀 READY TO PROCEED TO:")
-                print("   1. Add remaining crafting professions")
-                print("   2. Implement gathering system")
+                logger.info("\n🎉 ALL TESTS PASSED! Quinfall Companion App is ready!")
+                logger.info("✅ Crafting logic is working correctly")
+                logger.info("✅ State persistence is working")
+                logger.info("✅ All UI components are functional")
+                logger.info("\n🚀 READY TO PROCEED TO:")
+                logger.info("   1. Add remaining crafting professions")
+                logger.info("   2. Implement gathering system")
             else:
-                print("\n⚠️ SOME TESTS FAILED - Review report above")
+                logger.info("\n⚠️ SOME TESTS FAILED - Review report above")
                 
             return all_success
             
         except Exception as e:
-            print(f"\n💥 CRITICAL ERROR: {e}")
+            logger.error(f"\n💥 CRITICAL ERROR: {e}")
             return False
         finally:
             if self.main_window:

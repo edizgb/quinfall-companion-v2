@@ -6,14 +6,19 @@ Tests core functionality without complex GUI automation.
 
 import sys
 import json
+import os
+import logging
 from pathlib import Path
 
 # Add project root to path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+logger = logging.getLogger(__name__)
 
 def test_recipe_loading():
     """Test multi-file recipe loading"""
-    print("🔍 Testing Recipe Loading...")
+    logger.info("🔍 Testing Recipe Loading...")
     
     try:
         from ui.crafting_tab import CRAFTING_RECIPES, load_recipes
@@ -22,7 +27,7 @@ def test_recipe_loading():
         recipes = load_recipes()
         total_count = len(recipes)
         
-        print(f"✅ Loaded {total_count} recipes total")
+        logger.info(f"✅ Loaded {total_count} recipes total")
         
         # Count by profession
         prof_counts = {}
@@ -30,30 +35,30 @@ def test_recipe_loading():
             prof_name = recipe.profession.name if hasattr(recipe.profession, 'name') else str(recipe.profession)
             prof_counts[prof_name] = prof_counts.get(prof_name, 0) + 1
         
-        print("📊 Recipes by profession:")
+        logger.info("📊 Recipes by profession:")
         for prof, count in prof_counts.items():
-            print(f"   {prof}: {count} recipes")
+            logger.info(f"   {prof}: {count} recipes")
         
         # Test specific professions
-        expected_profs = ['BLACKSMITHING', 'COOKING', 'WOODWORKING', 'TAILORING', 'ALCHEMY']
+        expected_profs = ['WEAPONSMITH', 'COOKING', 'WOODWORKING', 'TAILORING', 'ALCHEMY']
         found_profs = list(prof_counts.keys())
         
         success = len(set(expected_profs) & set(found_profs)) >= 4
         
         if success:
-            print("✅ Multi-file recipe loading: SUCCESS")
+            logger.info("✅ Multi-file recipe loading: SUCCESS")
         else:
-            print("❌ Multi-file recipe loading: FAILED")
+            logger.error("❌ Multi-file recipe loading: FAILED")
             
         return success, total_count, prof_counts
         
     except Exception as e:
-        print(f"❌ Recipe loading failed: {e}")
+        logger.error(f"❌ Recipe loading failed: {e}")
         return False, 0, {}
 
 def test_recipe_data_integrity():
     """Test recipe data integrity"""
-    print("\n🔍 Testing Recipe Data Integrity...")
+    logger.info("\n🔍 Testing Recipe Data Integrity...")
     
     try:
         from ui.crafting_tab import CRAFTING_RECIPES
@@ -81,26 +86,26 @@ def test_recipe_data_integrity():
                 
             valid_recipes += 1
         
-        print(f"✅ Valid recipes: {valid_recipes}/{len(CRAFTING_RECIPES)}")
+        logger.info(f"✅ Valid recipes: {valid_recipes}/{len(CRAFTING_RECIPES)}")
         
         if issues:
-            print("⚠️ Issues found:")
+            logger.warning("⚠️ Issues found:")
             for issue in issues[:5]:  # Show first 5 issues
-                print(f"   {issue}")
+                logger.warning(f"   {issue}")
             if len(issues) > 5:
-                print(f"   ... and {len(issues)-5} more issues")
+                logger.warning(f"   ... and {len(issues)-5} more issues")
         else:
-            print("✅ All recipes have valid data structure")
+            logger.info("✅ All recipes have valid data structure")
             
         return len(issues) == 0, valid_recipes, issues
         
     except Exception as e:
-        print(f"❌ Recipe data integrity test failed: {e}")
+        logger.error(f"❌ Recipe data integrity test failed: {e}")
         return False, 0, [str(e)]
 
 def test_price_data():
     """Test price data availability"""
-    print("\n🔍 Testing Price Data...")
+    logger.info("\n🔍 Testing Price Data...")
     
     try:
         from ui.crafting_tab import CRAFTING_RECIPES
@@ -117,21 +122,21 @@ def test_price_data():
             else:
                 recipes_without_prices += 1
         
-        print(f"✅ Recipes with price data: {recipes_with_prices}")
-        print(f"⚠️ Recipes without price data: {recipes_without_prices}")
+        logger.info(f"✅ Recipes with price data: {recipes_with_prices}")
+        logger.warning(f"⚠️ Recipes without price data: {recipes_without_prices}")
         
         price_coverage = recipes_with_prices / len(CRAFTING_RECIPES) * 100
-        print(f"📊 Price data coverage: {price_coverage:.1f}%")
+        logger.info(f"📊 Price data coverage: {price_coverage:.1f}%")
         
         return price_coverage > 50, recipes_with_prices, recipes_without_prices
         
     except Exception as e:
-        print(f"❌ Price data test failed: {e}")
+        logger.error(f"❌ Price data test failed: {e}")
         return False, 0, 0
 
 def test_player_persistence():
     """Test player data persistence"""
-    print("\n🔍 Testing Player Data Persistence...")
+    logger.info("\n🔍 Testing Player Data Persistence...")
     
     try:
         from data.player import Player
@@ -142,7 +147,7 @@ def test_player_persistence():
         # Set test values
         test_skill = 42
         test_tool = 33
-        test_profession = "BLACKSMITHING"
+        test_profession = "WEAPONSMITH"
         
         player.skills[test_profession] = test_skill
         player.tools[test_profession] = test_tool
@@ -150,7 +155,7 @@ def test_player_persistence():
         
         # Save
         player.save()
-        print("✅ Player data saved")
+        logger.info("✅ Player data saved")
         
         # Load new instance
         player2 = Player()
@@ -165,20 +170,20 @@ def test_player_persistence():
         tool_match = loaded_tool == test_tool
         tool_type_match = loaded_tool_type == "Advanced"
         
-        print(f"✅ Skill persistence: {skill_match} ({loaded_skill} == {test_skill})")
-        print(f"✅ Tool persistence: {tool_match} ({loaded_tool} == {test_tool})")
-        print(f"✅ Tool type persistence: {tool_type_match} ({loaded_tool_type} == Advanced)")
+        logger.info(f"✅ Skill persistence: {skill_match} ({loaded_skill} == {test_skill})")
+        logger.info(f"✅ Tool persistence: {tool_match} ({loaded_tool} == {test_tool})")
+        logger.info(f"✅ Tool type persistence: {tool_type_match} ({loaded_tool_type} == Advanced)")
         
         return skill_match and tool_match and tool_type_match
         
     except Exception as e:
-        print(f"❌ Player persistence test failed: {e}")
+        logger.error(f"❌ Player persistence test failed: {e}")
         return False
 
 def main():
     """Run all functionality tests"""
-    print("🎯 QUINFALL COMPANION - FUNCTIONALITY TEST")
-    print("=" * 50)
+    logger.info("🎯 QUINFALL COMPANION - FUNCTIONALITY TEST")
+    logger.info("=" * 50)
     
     results = {}
     
@@ -199,42 +204,45 @@ def main():
     results['persistence'] = persistence_success
     
     # Final Report
-    print("\n" + "=" * 50)
-    print("📊 FINAL FUNCTIONALITY REPORT")
-    print("=" * 50)
+    logger.info("\n" + "=" * 50)
+    logger.info("📊 FINAL FUNCTIONALITY REPORT")
+    logger.info("=" * 50)
     
     passed = sum(1 for success in results.values() if success)
     total = len(results)
     
-    print(f"Tests Passed: {passed}/{total}")
-    print(f"Success Rate: {(passed/total)*100:.1f}%")
+    logger.info(f"Tests Passed: {passed}/{total}")
+    logger.info(f"Success Rate: {(passed/total)*100:.1f}%")
     
-    print("\nDetailed Results:")
+    logger.info("\nDetailed Results:")
     for test_name, success in results.items():
         status = "✅ PASS" if success else "❌ FAIL"
-        print(f"  {status}: {test_name}")
+        logger.info(f"  {status}: {test_name}")
     
     # Key Metrics
-    print(f"\n📈 Key Metrics:")
-    print(f"  Total Recipes: {total_recipes}")
-    print(f"  Valid Recipes: {valid_recipes}")
-    print(f"  Professions: {len(prof_counts)}")
-    print(f"  Recipes with Prices: {with_prices}")
-    
+    logger.info(f"\n📈 Key Metrics:")
+    logger.info(f"  Total Recipes: {total_recipes}")
+    logger.info(f"  Valid Recipes: {valid_recipes}")
+    logger.info(f"  Professions: {len(prof_counts)}")
+    logger.info(f"  Recipes with Prices: {with_prices}")
+
     # Conclusion
     if passed == total:
-        print("\n🎉 ALL FUNCTIONALITY TESTS PASSED!")
-        print("✅ Multi-file recipe loading works")
-        print("✅ Recipe data integrity is good")
-        print("✅ Price data is available")
-        print("✅ Player persistence works")
-        print("\n🚀 READY TO PROCEED:")
-        print("   1. Add more crafting professions")
-        print("   2. Implement gathering system")
+        logger.info("\n🎉 ALL FUNCTIONALITY TESTS PASSED!")
+        logger.info("✅ Multi-file recipe loading works")
+        logger.info("✅ Recipe data integrity is good")
+        logger.info("✅ Price data is available")
+        logger.info("✅ Player persistence works")
+        logger.info("\n🚀 READY TO PROCEED:")
+        logger.info("   1. Add more crafting professions")
+        logger.info("   2. Implement gathering system")
+        logger.info("   3. Add specialization tracking")
+        logger.info("   4. Implement API sync")
+        logger.info("   5. Add proper logging")
         return True
     else:
-        print(f"\n⚠️ {total-passed} TESTS FAILED")
-        print("Review issues above before proceeding")
+        logger.info(f"\n⚠️ {total-passed} TESTS FAILED")
+        logger.info("Review issues above before proceeding")
         return False
 
 if __name__ == "__main__":

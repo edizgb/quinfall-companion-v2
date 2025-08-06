@@ -21,6 +21,9 @@ from data.player import Player
 from utils.recipe_loader import RecipeLoader
 import json
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Load recipes from all profession JSON files
 def load_recipes():
@@ -45,7 +48,7 @@ def load_recipes():
                 with open(full_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
                     recipes = data.get('recipes', [])
-                    print(f"Debug: Loading {len(recipes)} {profession_name} recipes from JSON")
+                    logger.debug(f"Loading {len(recipes)} {profession_name} recipes from JSON")
                     
                     for i, recipe_data in enumerate(recipes, 1):
                         try:
@@ -92,17 +95,17 @@ def load_recipes():
                                 skill_level=skill
                             )
                             all_recipes.append(recipe)
-                            print(f"Debug: Loaded {profession_name} recipe {i}: {recipe.name} (Skill: {recipe.skill_level})")
+                            logger.debug(f"Loaded {profession_name} recipe {i}: {recipe.name} (Skill: {recipe.skill_level})")
                         except Exception as e:
-                            print(f"Error loading recipe {i} from {profession_name}: {e}")
+                            logger.error(f"Error loading recipe {i} from {profession_name}: {e}")
                     
-                    print(f"Debug: Successfully loaded {len(recipes)} {profession_name} recipes")
+                    logger.debug(f"Successfully loaded {len(recipes)} {profession_name} recipes")
             else:
-                print(f"Warning: Recipe file not found: {file_path}")
+                logger.warning(f"Warning: Recipe file not found: {file_path}")
         except Exception as e:
-            print(f"Error loading {profession_name} recipes: {e}")
+            logger.error(f"Error loading {profession_name} recipes: {e}")
     
-    print(f"Debug: Total recipes loaded: {len(all_recipes)}")
+    logger.debug(f"Total recipes loaded: {len(all_recipes)}")
     return all_recipes
 
 CRAFTING_RECIPES = load_recipes()
@@ -143,9 +146,9 @@ class ImprovedCraftingTab(BaseTab):
                     self.skill_level.setValue(self.profession_skills[profession])
                     self.skill_level.blockSignals(False)
                     self.skill_level_label.setText(str(self.profession_skills[profession]))
-                    print(f"Debug: Loaded skill {self.profession_skills[profession]} for {profession}")
+                    logger.debug(f"Loaded skill {self.profession_skills[profession]} for {profession}")
         except Exception as e:
-            print(f"Error loading profession skill: {e}")
+            logger.error(f"Error loading profession skill: {e}")
     
     def save_profession_skill(self):
         """Save current skill level for current profession"""
@@ -155,10 +158,10 @@ class ImprovedCraftingTab(BaseTab):
                 profession = self.profession_combo.itemData(current_index)
                 skill_value = self.skill_level.value()
                 self.profession_skills[profession] = skill_value
-                print(f"Debug: Saved skill {skill_value} for {profession}")
+                logger.debug(f"Saved skill {skill_value} for {profession}")
                 self.save_preferences()
         except Exception as e:
-            print(f"Error saving profession skill: {e}")
+            logger.error(f"Error saving profession skill: {e}")
     
     def get_current_profession(self):
         """Get currently selected profession"""
@@ -194,7 +197,7 @@ class ImprovedCraftingTab(BaseTab):
         tier_map = {"Basic": 1, "Improved": 2, "Advanced": 3}
         tool_tier_value = tier_map.get(value, 1)
         
-        print(f"Debug: Tool tier changed to: {value} (value: {tool_tier_value})")
+        logger.debug(f"Tool tier changed to: {value} (value: {tool_tier_value})")
         self.current_tool_type = value
         self.update_recipe_display()
         self.save_preferences()
@@ -247,7 +250,7 @@ class ImprovedCraftingTab(BaseTab):
         
         skill_level = self.skill_level.value()
         
-        print(f"Debug: Profession={profession}, Skill={skill_level}, Recipes per page={self.recipes_per_page}")
+        logger.debug(f"Profession={profession}, Skill={skill_level}, Recipes per page={self.recipes_per_page}")
         
         # Filter recipes
         filtered_recipes = []
@@ -263,7 +266,7 @@ class ImprovedCraftingTab(BaseTab):
                 recipe.tool_level <= max_tool_level):
                 filtered_recipes.append(recipe)
         
-        print(f"Debug: Found {len(filtered_recipes)} recipes for {profession}")
+        logger.debug(f"Found {len(filtered_recipes)} recipes for {profession}")
         
         # Pagination
         total_pages = max(1, (len(filtered_recipes) + self.recipes_per_page - 1) // self.recipes_per_page)
@@ -273,7 +276,7 @@ class ImprovedCraftingTab(BaseTab):
         end_idx = start_idx + self.recipes_per_page
         page_recipes = filtered_recipes[start_idx:end_idx]
         
-        print(f"Debug: Displaying {len(page_recipes)} recipe buttons on page {self.current_page}")
+        logger.debug(f"Displaying {len(page_recipes)} recipe buttons on page {self.current_page}")
         
         # Update page controls
         self.page_label.setText(f"Page {self.current_page} of {total_pages}")
@@ -361,7 +364,7 @@ class ImprovedCraftingTab(BaseTab):
         self.selected_recipe = recipe
         self.craft_button.setEnabled(True)
         self.update_material_status()
-        print(f"Selected recipe: {recipe.name}")
+        logger.info(f"Selected recipe: {recipe.name}")
     
     def update_material_status(self):
         """Update material status display (for compatibility)"""
@@ -372,7 +375,7 @@ class ImprovedCraftingTab(BaseTab):
     def craft_selected_recipe(self):
         """Craft the currently selected recipe"""
         if not self.selected_recipe:
-            print("No recipe selected for crafting")
+            logger.warning("No recipe selected for crafting")
             return
         
         recipe = self.selected_recipe
@@ -413,7 +416,7 @@ class ImprovedCraftingTab(BaseTab):
             ])
             
             detailed_message = "\n".join(feedback_lines)
-            print(detailed_message)
+            logger.info(detailed_message)
             
             # Update displays
             self.update_material_status()
@@ -421,7 +424,7 @@ class ImprovedCraftingTab(BaseTab):
             self.update_inventory_display()
             self.update_crafting_history(detailed_message)
         else:
-            print(f"❌ {message}")
+            logger.error(f"❌ {message}")
     
     def reset_inventory(self, value=0):
         """Reset inventory to specified value"""
@@ -430,9 +433,9 @@ class ImprovedCraftingTab(BaseTab):
             self.player.save()
             self.update_material_status()
             self.update_inventory_display()
-            print(f"✅ Inventory reset to {value} for all materials")
+            logger.info(f"✅ Inventory reset to {value} for all materials")
         except Exception as e:
-            print(f"❌ Error resetting inventory: {e}")
+            logger.error(f"❌ Error resetting inventory: {e}")
     
     def reset_storage_1k(self):
         """Reset storage to 1000 for all materials"""
@@ -441,9 +444,9 @@ class ImprovedCraftingTab(BaseTab):
             self.player.save()
             self.update_material_status()
             self.update_inventory_display()
-            print(f"✅ Storage reset to 1000 for all materials")
+            logger.info(f"✅ Storage reset to 1000 for all materials")
         except Exception as e:
-            print(f"❌ Error resetting storage: {e}")
+            logger.error(f"❌ Error resetting storage: {e}")
     
     def reset_storage_10k(self):
         """Reset storage to 10000 for all materials"""
@@ -452,12 +455,12 @@ class ImprovedCraftingTab(BaseTab):
             self.player.save()
             self.update_material_status()
             self.update_inventory_display()
-            print(f"✅ Storage reset to 10000 for all materials")
+            logger.info(f"✅ Storage reset to 10000 for all materials")
         except Exception as e:
-            print(f"❌ Error resetting storage: {e}")
+            logger.error(f"❌ Error resetting storage: {e}")
     
     def load_preferences(self):
-        """Load user preferences"""
+        """Load user preferences from disk"""
         try:
             prefs_file = Path(__file__).parent.parent / 'saves' / 'ui_preferences.json'
             if prefs_file.exists():
@@ -473,7 +476,7 @@ class ImprovedCraftingTab(BaseTab):
                             profession = Profession[prof_name]
                             self.profession_skills[profession] = skill_level
                         except KeyError:
-                            print(f"Warning: Unknown profession '{prof_name}' in preferences, skipping")
+                            logger.warning(f"Unknown profession '{prof_name}' in preferences, skipping")
                             
                     # Load current tool type if it exists
                     current_tool_type = prefs.get('current_tool_type', 'Basic')
@@ -486,7 +489,7 @@ class ImprovedCraftingTab(BaseTab):
             else:
                 self.recipes_per_page = 10
         except Exception as e:
-            print(f"Error loading preferences: {e}")
+            logger.error(f"Error loading preferences: {e}")
             self.recipes_per_page = 10
     
     def save_preferences(self):
@@ -511,9 +514,9 @@ class ImprovedCraftingTab(BaseTab):
             with open(prefs_file, 'w') as f:
                 json.dump(prefs, f, indent=2)
                 
-            print("Debug: UI preferences saved successfully")
+            logger.debug("UI preferences saved successfully")
         except Exception as e:
-            print(f"Error saving preferences: {e}")
+            logger.error(f"Error saving preferences: {e}")
     
     def update_inventory_display(self):
         """Update the inventory display"""

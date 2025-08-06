@@ -1,0 +1,11 @@
+// config.json
+{
+  "ai.assistant": {
+    "endpoints": [
+      {
+        "url": "http://localhost:11434/v1",
+        "defaultModel": "deepseek-coder:6.7b"
+      }
+    ]
+  }
+}

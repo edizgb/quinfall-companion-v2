@@ -1,6 +1,10 @@
 """Simplified validation test"""
 import json
 from pathlib import Path
+import logging
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 # Test paths
 test_ref = Path('data/material_reference.json')
@@ -16,9 +20,9 @@ with open(test_recipes) as f:
 
 # Simple validation
 for recipe in recipes[:3]:  # Just test first 3 recipes
-    print(f"Checking {recipe['recipe_name']}")
+    logger.info(f"Checking {recipe['recipe_name']}")
     for mat in recipe['materials']:
         if mat not in materials:
-            print(f"  Missing material: {mat}")
+            logger.warning(f"  Missing material: {mat}")
         else:
-            print(f"  Valid material: {mat}")
+            logger.info(f"  Valid material: {mat}")

@@ -13,22 +13,25 @@ from typing import List
 import json
 from pathlib import Path
 from ui.notifications import RecipeUpdateNotifier
+import logging
+
+logger = logging.getLogger(__name__)
 from utils.recipe_utils import compare_recipes
 
 CRAFTING_PROFESSIONS = [
-    Profession.BLACKSMITHING,
-    Profession.ARMORSMITHING,
-    Profession.WEAPONSMITHING,
+    Profession.ARMORSMITH,
+    Profession.WEAPONSMITH,
     Profession.ALCHEMY,
     Profession.COOKING,
     Profession.ENCHANTING,
-    Profession.ENGINEERING,
     Profession.JEWELCRAFTING,
-    Profession.TAILORING
+    Profession.TAILORING,
+    Profession.WOODWORKING
 ]
 
 RECIPE_FILES = {
-    'blacksmithing': Path(__file__).parent.parent / 'data' / 'recipes_blacksmithing.json',
+    'weaponsmith': Path(__file__).parent.parent / 'data' / 'recipes_weaponsmith.json',
+    'armorsmith': Path(__file__).parent.parent / 'data' / 'recipes_armorsmith.json',
     'cooking': Path(__file__).parent.parent / 'data' / 'recipes_cooking.json',
     'woodworking': Path(__file__).parent.parent / 'data' / 'recipes_woodworking.json',
     'tailoring': Path(__file__).parent.parent / 'data' / 'recipes_tailoring.json',
@@ -42,13 +45,13 @@ def load_recipes() -> List[Recipe]:
     for profession_name, recipe_file in RECIPE_FILES.items():
         try:
             if not recipe_file.exists():
-                print(f"Debug: Recipe file not found: {recipe_file}")
+                logger.debug(f"Recipe file not found: {recipe_file}")
                 continue
                 
             with open(recipe_file, 'r') as f:
                 data = json.load(f)
                 recipes = []
-                print(f"Debug: Loading {len(data['recipes'])} {profession_name} recipes from JSON")
+                logger.debug(f"Loading {len(data['recipes'])} {profession_name} recipes from JSON")
                 
                 for i, item in enumerate(data['recipes']):
                     try:
@@ -72,20 +75,20 @@ def load_recipes() -> List[Recipe]:
                             recipe.output_prices = item['output_prices']
                         
                         recipes.append(recipe)
-                        print(f"Debug: Loaded {profession_name} recipe {i+1}: {recipe.name} (Skill: {recipe.skill_level})")
+                        logger.debug(f"Loaded {profession_name} recipe {i+1}: {recipe.name} (Skill: {recipe.skill_level})")
                         
                     except Exception as recipe_error:
-                        print(f"Error loading {profession_name} recipe {i+1}: {recipe_error}")
+                        logger.error(f"Error loading {profession_name} recipe {i+1}: {recipe_error}")
                         continue
                         
                 all_recipes.extend(recipes)
-                print(f"Debug: Successfully loaded {len(recipes)} {profession_name} recipes")
+                logger.debug(f"Successfully loaded {len(recipes)} {profession_name} recipes")
                 
         except Exception as e:
-            print(f"Error loading {profession_name} recipes file: {e}")
+            logger.error(f"Error loading {profession_name} recipes file: {e}")
             continue
     
-    print(f"Debug: Total recipes loaded: {len(all_recipes)}")
+    logger.debug(f"Total recipes loaded: {len(all_recipes)}")
     return all_recipes
 
 CRAFTING_RECIPES = load_recipes()
@@ -525,11 +528,11 @@ class CraftingTab(BaseTab):
                 raise ValueError(f"Cannot craft - missing requirements: {', '.join(missing)}")
             
             # Crafting logic here
-            print(f"Crafted: {recipe.name}")
+            logger.info(f"Crafted: {recipe.name}")
             self.player.save()
             
         except Exception as e:
-            print(f"Error: {str(e)}")
+            logger.error(f"Error: {str(e)}")
             return False
         return True
 
@@ -545,14 +548,14 @@ class CraftingTab(BaseTab):
             skill_level = self.player.skills.get(current_profession, 1)
             price_count = int(self.price_count_select.currentText())
             
-            print(f"Debug: Profession={current_profession}, Skill={skill_level}, Price Count={price_count}")
+            logger.debug(f"Profession={current_profession}, Skill={skill_level}, Price Count={price_count}")
         
             # Filter recipes by profession and skill level
             filtered = [r for r in CRAFTING_RECIPES 
                        if r.profession == current_profession 
                        and r.skill_level <= skill_level]
             
-            print(f"Debug: Found {len(filtered)} recipes for {current_profession}")
+            logger.debug(f"Found {len(filtered)} recipes for {current_profession}")
             filtered.sort(key=lambda x: (x.skill_level, x.name))
             
             # Calculate pagination
@@ -601,10 +604,10 @@ class CraftingTab(BaseTab):
             # Add stretch to push buttons to top
             self.recipe_layout.addStretch()
             
-            print(f"Debug: Displaying {len(page_recipes)} recipe buttons on page {self.current_page}")
+            logger.debug(f"Displaying {len(page_recipes)} recipe buttons on page {self.current_page}")
             
         except Exception as e:
-            print(f"Error in update_recipe_display: {e}")
+            logger.error(f"Error in update_recipe_display: {e}")
             # Show error in recipe area
             error_label = QLabel(f"Error loading recipes: {e}")
             error_label.setStyleSheet("color: #f87171; padding: 20px;")
@@ -698,7 +701,7 @@ class CraftingTab(BaseTab):
         
         self.selected_recipe = recipe
         self.update_material_status()
-        print(f"Selected recipe: {recipe.name}")
+        logger.info(f"Selected recipe: {recipe.name}")
     
     def update_material_status(self):
         """Update the material status display for selected recipe"""
@@ -738,7 +741,7 @@ class CraftingTab(BaseTab):
             else:
                 self.price_count_preference = 5
         except Exception as e:
-            print(f"Error loading preferences: {e}")
+            logger.error(f"Error loading preferences: {e}")
             self.price_count_preference = 5
     
     def load_profession_levels(self):
@@ -773,7 +776,7 @@ class CraftingTab(BaseTab):
             # Update recipe display
             self.update_recipe_display()
         except Exception as e:
-            print(f"Error loading profession levels: {e}")
+            logger.error(f"Error loading profession levels: {e}")
     
     def save_preferences(self):
         """Save user preferences for price display"""
@@ -786,7 +789,7 @@ class CraftingTab(BaseTab):
             with open(prefs_file, 'w') as f:
                 json.dump(prefs, f, indent=2)
         except Exception as e:
-            print(f"Error saving preferences: {e}")
+            logger.error(f"Error saving preferences: {e}")
 
     def check_for_updates(self, recipe):
         """Check if recipe has been updated"""
@@ -803,9 +806,9 @@ class CraftingTab(BaseTab):
             self.player.reset_inventory(value)
             self.player.save()
             self.update_material_status()
-            print(f"✅ Inventory reset to {value} for all materials")
+            logger.info(f"✅ Inventory reset to {value} for all materials")
         except Exception as e:
-            print(f"❌ Error resetting inventory: {e}")
+            logger.error(f"❌ Error resetting inventory: {e}")
     
     def reset_storage(self, value=1000):
         """Reset storage to specified value"""
@@ -813,9 +816,9 @@ class CraftingTab(BaseTab):
             self.player.reset_storage(value)
             self.player.save()
             self.update_material_status()
-            print(f"✅ Storage reset to {value} for all materials")
+            logger.info(f"✅ Storage reset to {value} for all materials")
         except Exception as e:
-            print(f"❌ Error resetting storage: {e}")
+            logger.error(f"❌ Error resetting storage: {e}")
     
     def reset_storage_1k(self):
         """Reset storage to 1000 for all materials"""
@@ -831,4 +834,4 @@ class CraftingTab(BaseTab):
         if recipe:
             self.craft_item(recipe)
         else:
-            print("No recipe selected for crafting")
+            logger.warning("No recipe selected for crafting")
